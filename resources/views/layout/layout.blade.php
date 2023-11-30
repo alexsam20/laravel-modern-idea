@@ -6,8 +6,8 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <link rel="stylesheet" href="./bootstrap.min.css"/>
-    <link rel="stylesheet" href="./all.min.css"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"/>
 </head>
 <body>
     @include('layout.nav')
@@ -15,6 +15,6 @@
         {{-- Page content goes here --}}
         @yield('content')
     </div>
-    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

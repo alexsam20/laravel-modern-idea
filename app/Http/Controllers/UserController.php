@@ -44,9 +44,11 @@ class UserController extends Controller
             $imagePath = request()->file('image')->store('profile', 'public');
             $validated['image'] = $imagePath;
 
-            if (isset($user->image)) {
-                Storage::disk('public')->delete($user->image);
-            }
+//            if (isset($user->image)) {
+//                Storage::disk('public')->delete($user->image);
+//            }
+
+                Storage::disk('public')->delete($user->image ?? '');
         }
 
         $user->update($validated);

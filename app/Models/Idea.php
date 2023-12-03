@@ -11,28 +11,23 @@ class Idea extends Model
 
     protected $with = ['user:id,name,image', 'comments.user:id,name,image',];
 
-//    protected $guarded = [
-//        'id',
-//        'created_at',
-//        'updated_at',
-//    ];
-
-//    protected $guarded = [];
-
     protected $fillable = [
         'user_id',
         'content',
-        'likes',
     ];
 
     public function comments()
     {
-//        return $this->hasMany(Comment::class, 'idea_id', 'id');
         return $this->hasMany(Comment::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'idea_like')->withTimestamps();
     }
 }

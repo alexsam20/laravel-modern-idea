@@ -13,7 +13,7 @@ class FollowerController extends Controller
 
         $follower->followings()->attach($user);
 
-        return redirect()->route('users.show', $user->id)->with('success', 'Followed successfully!  ');
+        return redirect()->route('users.show', $user->id)->with('success', 'Followed successfully!');
     }
 
     public function unfollow(User $user)

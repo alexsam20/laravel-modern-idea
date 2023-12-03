@@ -15,15 +15,6 @@
             @empty
                 <p class="text-center mt-4">No Results Found.</p>
             @endforelse
-{{--            @if(count($ideas) > 0)--}}
-{{--                @foreach($ideas as $idea)--}}
-{{--                    <div class="mt-3">--}}
-{{--                        @include('shared.idea-card')--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            @else--}}
-{{--                No Results Found.--}}
-{{--            @endif--}}
             <div class="mt-3">
                 {{ $ideas->withQueryString()->links() }}
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedController;
@@ -9,11 +10,11 @@ use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('ideas', IdeaController::class)->except(['index', 'create', 'show'])->middleware('auth');
 
-Route::resource('ideas', IdeaController::class)->only('show');
+Route::resource('ideas', IdeaController::class)->only(['show']);
 
 Route::resource('ideas.comments', CommentController::class)->only(['store'])->middleware('auth');
 
@@ -33,3 +34,5 @@ Route::get('/feed', FeedController::class)->middleware('auth')->name('feed');
 Route::get('/terms', function (){
     return view('terms');
 })->name('terms');
+
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'admin']);
